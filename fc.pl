@@ -1,64 +1,40 @@
 is_member(_, []) :- false.
 is_member(X, [H | Tail]) :- X = H; is_member(X, Tail).
 
-has_starred(Actor, Movie) :- 
+has_starred(Movie, Actor) :- 
 	starred_actors(Movie, Actors),
 	is_member(Actor, Actors).
 
-
-maxlist([],0, []).
-
-maxlist([Head|Tail],Max, MaxEl) :-
-    maxlist(Tail,TailMax, MaxEl),
-		string_length(Head, Len),
-    Len > TailMax,
-		MaxEl is Head,
-    Max is Head.
-
-maxlist([Head|Tail],Max, MaxEl) :-
-    maxlist(Tail,TailMax, MaxEl),
-    string_length(Head, Len),
-		Len =< TailMax,
-		MaxEl is TailMax,
-    Max is TailMax.
-
-are_about(Search, Movie) :- 
+are_about(Movie, Tag) :- 
 	has_tags(Movie, Tags),
-	is_member(Search, Tags).
+	is_member(Tag, Tags).
 
 includes(Str, SubString) :-
 	sub_string(Str, _, _, _, SubString).
 
-split_string_with_substring(String, Before, After, SubString) :-
-  sub_string(String, Bef, _, Aft, SubString), !,
-  sub_string(String, 0, Bef, _, NameString),
-  atom_string(Before, NameString),
-  sub_string(String, _, Aft, 0, After).
+
+identify_question(Question, X) :-
+	(includes(Question, "are about");
+	includes(Question, "be described")).
+
 
 identify_question(Question, X) :-
 	(includes(Question, "director");
 	includes(Question, "directs")),
-	includes(Question, Movie),
-	directed_by(Movie, X).
-	
-identify_question(Question, X) :-
-	(split_string_with_substring(Question, _, After, "are about");
-	split_string_with_substring(Question, _, After, "be described")),
-	findall(Y, (includes(After, Y),are_about(Y, _)), L),
-	find_biggest(L, Y, 0),
-	findall(Z, are_about(Y, Z), X).
+	write("A directors question!!! Do you want to know who is the director of some movie or which movies a director did their magic?"),nl,
+	read(Y),
+	(findall(X, directed_by(Y, X), L), write(L));
+	(directed_by(X, Y), write(X)).
 
 identify_question(Question, X) :-
 	(includes(Question, "acts");
 	includes(Question, "did act");
-	includes(Question, "starred")),
-	findall(Y, (includes(Question, Y),has_starred(Y, _)), L),
-	find_biggest(L, Y, 0),
-	findall(Z, has_starred(Y, Z), X).
+	includes(Question, "starred")).
 
-ask :-
+hi :-
 	write("Hello human, what do you want to know about movies?"),nl,
 	read(Question),
-	includes(Question, "?"),
-	identify_question(Question, X),
-	write(X).
+	identify_question(Question, X).
+
+ask :- hi.
+hello :- hi.
