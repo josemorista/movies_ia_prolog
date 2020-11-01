@@ -13,3 +13,8 @@ be_described_by(X, Movie) :-
 	are_about(X, Movie);
 	has_starred(X, Movie);
 	directed_by(X, Movie).
+
+identify_question(Question) :-
+	split_string(Question, "\s", "\s", L),
+	is_member("directed", L),
+	write('A question about directors, nice!').

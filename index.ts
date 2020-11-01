@@ -29,12 +29,12 @@ data.split(/\r?\n/).forEach(line => {
 		let value = originalValue.trim();
 
 		if (describes === 'starred_actors' || describes === 'has_tags' || describes === 'has_genre') {
-			value = `[${value.split(',').map(el => `'${el.trim()}'`).join(',')}]`;
+			value = `[${value.split(',').map(el => `"${el.trim()}"`).join(',')}]`;
 		} else {
-			value = `'${value}'`;
+			value = `"${value}"`;
 		}
 
-		facts[describes].push(`${describes}('${movie}', ${value}).`);
+		facts[describes].push(`${describes}("${movie}", ${value}).`);
 	}
 });
 
@@ -44,5 +44,5 @@ for (const key in facts) {
 	dataToWrite += `\n${facts[key].join('\n')}`;
 }
 
-fs.writeFileSync(path.resolve(__dirname, 'mv.pl'), movies.map(el => `movie('${el}').`).join('\n'));
+fs.writeFileSync(path.resolve(__dirname, 'mv.pl'), movies.map(el => `movie("${el}").`).join('\n'));
 fs.writeFileSync(path.resolve(__dirname, 'db.pl'), dataToWrite);
