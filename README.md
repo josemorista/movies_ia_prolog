@@ -7,7 +7,7 @@ Para implementação do trabalho foi utilizado o compilador swi-prolog.
 
 ### Estrutura 
 
-O projeto é dividido em dois arquivos, db.pl e fc.pl, o primeiro contém a base de fatos que serão utilizados pela inteligência para responder as perguntas do usuário.
+O projeto é dividido em dois arquivos, db.pl e fc.pl, o primeiro contém a base de fatos que serão utilizados pela inteligência para responder as perguntas do usuário. O segundo contém as funções extras para interação e resolução das perguntas informadas.
 
 ### Instruções de execução
 
