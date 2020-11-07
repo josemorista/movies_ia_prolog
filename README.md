@@ -11,7 +11,7 @@ O projeto é dividido em dois arquivos, db.pl e fc.pl, o primeiro contém a base
 
 ### Instruções de execução
 
-Para executar os comandos disponíveis devem ser carregados respectivamente os arquivos db.pl e fc.pl utilizando-se os comandos:
+Para executar os comandos disponíveis, devem ser carregados respectivamente os arquivos db.pl e fc.pl.
 ```
 
 [db].
@@ -29,7 +29,7 @@ hello.
 ask.
 ```
 
-Em seguida o agente imprime uma mensagem de boas vindas, e realiza uma operação de leitura para identificar o assunto de usa pergunta. Assuntos disponíveis são: Diretores, atores, sugestões e descrições de filmes. O agente busca identificar por palavras comuns para inferir o assunto desejado. Exemplos de interações e perguntas para cada um dos temas são descritos abaixo:
+Em seguida, o agente imprime uma mensagem de boas vindas e realiza uma operação de leitura para identificar o assunto de sua pergunta. Assuntos disponíveis são: Diretores, atores, sugestões e descrições de filmes. O agente busca identificar por palavras comuns para inferir o assunto desejado. Exemplos de interações e perguntas para cada um dos temas são descritos abaixo:
 
 
 ```
