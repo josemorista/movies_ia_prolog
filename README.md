@@ -1,4 +1,4 @@
-# Trabalho 2: Movie Dialog dataset
+# Movie Dialog dataset
 ## Autor: José Morista Carneiro da Silva
 
 ### Desenvolvimento
